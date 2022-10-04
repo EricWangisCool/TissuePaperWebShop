@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.98.0">
+  <title>TOYO TISSUE</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/album/">
+
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/dist/css/PageCSS.css" rel="stylesheet" >
+
+  <!--------- Introduce Sweet alert --------------->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+
+
+<body>
+
+  <header>
+    <h1 id='TITLE'><a href="../../Main page/Index.HTML">TOYO TISSUE</a></h1>
+    <img src="../Image/CartPic.png" id="CartPic">
+  </header>
+
+  <main>
+
+    <section class="py-5 text-center container">
+      <b>五月花系列</b>
+    </section>
+    <p id="demo"></p>
+    <div class="album py-5 bg-light">
+      <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="../Image/Tissue Ten.jpg" alt="" width="100%" height="225">
+              <div class="card-body">
+                <p class="card-text">【現貨◆滿額免運】五月花 高吸力柔韌雙層擦手紙 FSC HACCP食品級雙認證 100抽*2張*20包</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary" id="DirectBuyA">直接購買</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" value="五月花 高吸力柔韌雙層擦手紙"
+                      onclick="clickCounter(this)">
+                      加入購物車
+                    </button>
+                  </div>
+                  <small class="text-muted">$460</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="../Image/Tissue Three.png" alt="" width="100%" height="225">
+              <div class="card-body">
+                <p class="card-text">【現貨◆滿額免運】250抽*48包 五月花衛生紙 雙層單抽 小抽 多用途衛生紙 溶於水</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">直接購買</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" value="五月花 雙層單抽 多用途衛生紙"
+                      onclick="clickCounter(this)">
+                      加入購物車
+                    </button>
+                  </div>
+                  <small class="text-muted">$695</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <img src="../Image/Tissue Five.jpeg" width="100%" height="225" alt="">
+              <div class="card-body">
+                <p class="card-text">【現貨◆滿額免運】五月花迷你擦手紙 廚房紙巾 抽取式擦拭紙巾 100抽 適合幼童 食品 迷你經濟型開學必備</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">直接購買</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" value="五月花迷你擦手紙"
+                      onclick="clickCounter(this)">
+                      加入購物車
+                    </button>
+                  </div>
+                  <small class="text-muted">$640</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="float-end mb-1">
+        <a href="#" style="color: white;">Back to top</a>
+      </p>
+    </div>
+    <div class='footerBrand'>
+      <p style="font-size: 1.9rem; font-weight: 300; letter-spacing: .19em; margin-bottom: .62em;">TOYO TISSUE</p>
+      <p><br>
+        As tender as
+        <br><br>
+        we care of you
+        <br><br><br><br>
+      </p>
+    </div>
+  </footer>
+
+
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+
+    // ------------------    五月花 高吸力直接購買連結設定  ------------------------------------
+    DirectBuyA.onclick = function () {
+      document.location.href = "../../Page for buying/Direct Buy/index.html"
+    }
+
+    // ------------------    按加入購物車, 顯示該產品購物車數量出來  ------------------------------------
+    var countOne = ["五月花 高吸力柔韌雙層擦手紙", "五月花 雙層單抽 多用途衛生紙", "五月花迷你擦手紙"];
+    var countTwo = [0, 0, 0];
+    function clickCounter(product) {
+      for (let i = 0; i < countOne.length; i++) {
+        if (product.value == countOne[i]) {
+          countTwo[i] += 1;
+          Swal.fire(`您已成功將 *${countTwo[i]}筆* <BR><${product.value}><BR>放入購物籃裡`);
+        }
+      } 
+    }
+
+    // ------------------    將各產品購物車數量寫入local storage  ------------------------------------
+    CartPic.onclick = function () {
+      localStorage.setItem('ProductA', `${countTwo[0]}`);
+      localStorage.setItem('ProductB', `${countTwo[1]}`);
+      localStorage.setItem('ProductC', `${countTwo[2]}`);
+      document.location.href = "../../Page for buying/index.html";
+    }
+
+    
+  </script>
+
+
+</body>
+
+</html>
